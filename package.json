@@ -1,0 +1,11 @@
+{
+  "name": "SmugBot",
+  "version": "1.0.0",
+  "description": "SmugBug's personal Discord bot",
+  "main": "main.js",
+  "author": "SmugBug",
+  "dependencies": {
+    "discord.io": "github:woor/discord.io#gateway_v6",
+    "winston": "^2.4.1"
+  }
+}
