@@ -235,3 +235,13 @@ exports.haiku = () => {
             break;
     }
 }
+
+exports.roll = (userID) => {
+	
+	var die = Math.floor(100*Math.random()).toString();
+	
+	if (die < 33) 		return '<@'+userID+'> :game_die:```css\n [' + die + ']```';
+	else if (die < 66) 	return '<@'+userID+'> :game_die:```fix\n [' + die + ']```';
+	else 				return '<@'+userID+'> :game_die:```ini\n [' + die + ']```';
+	
+}

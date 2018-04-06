@@ -1,7 +1,7 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
-const poetry = require('./src/haiku.js');
+const game = require('./src/games.js');
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -52,7 +52,7 @@ bot.on('message', function(user, userID, channelID, message, evt) {
             case 'HAIKU':
                 bot.sendMessage({
                     to: channelID,
-                    message: poetry.haiku()
+                    message: game.haiku()
                 });
                 break;
 				
@@ -62,19 +62,21 @@ bot.on('message', function(user, userID, channelID, message, evt) {
             case 'roll':
             case 'Roll':
             case 'ROLL':
-			
-			var die = Math.floor(100*Math.random()).toString();
-			var roll;
-			
-			if (die < 33) 		roll = '```css\n [' + die + ']```';
-			else if (die < 66) 	roll = '```fix\n [' + die + ']```';
-			else 				roll = '```ini\n [' + die + ']```';
-			
                 bot.sendMessage({
                     to: channelID,
-                    message: roll
+                    message: game.roll(userID)
                 });
                 break;
+				
+			case 'userinfo':
+			case 'Userinfo':
+			case 'USERINFO':
+                bot.sendMessage({
+                    to: userID,
+                    message: 'Hey '+user+'! \nYour userID is '+userID+'.'
+                });
+                break;
+			
 
 
             //////////////////
